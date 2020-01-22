@@ -31,7 +31,7 @@
 		var post_id = mybaseurl+"posts/"+dataSet[i]['id'];
         var action_icons = '<a href="'+post_id+'" class="glyphicon glyphicon-eye-open"></a><a href="'+post_id+'" class="glyphicon glyphicon-edit"></a><a href="<?php echo site_url('/posts'); ?>" class="glyphicon glyphicon-trash"></a>';
 		    objectsArray.push([dataSet[i]['id'], dataSet[i]['title'], dataSet[i]['content'], action_icons]);
-		console.log(post_id);
+		//console.log(post_id);
 		}
     	console.log(objectsArray);
     	$.fn.dataTable.render.ellipsis = function ( cutoff ) {
