@@ -1,13 +1,14 @@
 <?php
 class Posts_model extends CI_Model {
-	
-	public function index(){
-		echo "model";
-	}
 
-	public function getRows(){
-		$query = $this->db->get("posts");
-		return $query->result_array();
+	public function getRows($id = ""){
+		if(!empty($id)){		
+			$query = $this->db->get_where("posts", array('id' => $id));
+			return $query->row_array();
+		}else {
+			$query = $this->db->get("posts");
+			return $query->result_array();
+		}
 	}
 }
 

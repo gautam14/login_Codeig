@@ -17,29 +17,30 @@ class Posts extends CI_controller {
 	}
 
 	public function view($id){
-		$data = array();		
-		$data['posts'] = $this->posts_model->getRows('$id');
-		$data['title'] = $data['posts']['title'];
+		$data = array();
+		if(!empty($id)){
+			$data['posts'] = $this->posts_model->getRows($id);
+			$data['title'] = $data['posts']['title'];
+			
+			//print_r($data['posts']['title']);
+			
+			$this->load->view("templates/header",$data);
+			$this->load->view("posts/view",$data);
+			$this->load->view("templates/footer");
+		}else{
+			redirect("/posts");
+			}
 		
-		$this->load->view("templates/header",$data);
-		$this->load->library('table');
-
-		$data = array(
-		        array('Name', 'Color', 'Size'),
-		        array('Fred', 'Blue', 'Small'),
-		        array('Mary', 'Red', 'Large'),
-		        array('John', 'Green', 'Medium')
-		);
-
-		echo $this->table->generate($data);
-		$this->load->view("posts/view",$data);
-
-		$this->load->view("templates/footer");
 	}
 	
 	public function add(){ 
 		die("test");
-		}
+	}
+	public function edit($id){
+		$postData = $this->posts_model->getRows($id);
+		echo "<pre>";
+		print_r($postData);
+	}
 }
 
 ?>
