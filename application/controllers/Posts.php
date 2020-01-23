@@ -21,6 +21,7 @@ class Posts extends CI_controller {
 		if(!empty($id)){
 			$data['posts'] = $this->posts_model->getRows($id);
 			$data['title'] = $data['posts']['title'];
+			$data['content'] = $data['posts']['content'];
 			
 			//print_r($data['posts']['title']);
 			
@@ -41,6 +42,18 @@ class Posts extends CI_controller {
 		echo "<pre>";
 		print_r($postData);
 	}
+	public function delete ($id){
+		$delete = $this->posts_model->delete($id);
+		if($delete){
+			$this->session->set_userdata('success_msg', 'Post has been removed successfully.');
+		}else {
+			$this->session->set_userdata('error_msg', 'Something went wrong, please try again.');
+		}
+		
+		redirect('/posts');
+		
+		
+		}
 }
 
 ?>

@@ -10,6 +10,11 @@ class Posts_model extends CI_Model {
 			return $query->result_array();
 		}
 	}
+	
+	public function delete($id){
+			$delete = $this->db->delete("posts", array("id" => $id));
+			return $delete?true:false;
+			
+	}
 }
-
 ?>

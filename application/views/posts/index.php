@@ -2,14 +2,16 @@
 <div class="page-header">
     <h3 class="text-center"><?php echo $title; ?></h3>
 </div>
+
+<?php if(!empty($success_msg)){ ?>
 <div class="col-xs-12">
-	<div class="panel panel-default ">
-		<div class="panel-heading">Posts</div>
-		<div class="col-xs-12 col-sm-6 col-md-12">
-			<?php echo $title; ?>
-		</div>
-	</div>
+<div class="alert alert-success"><?php echo $success_msg; ?></div>
 </div>
+<?php }elseif(!empty($error_msg)){ ?>
+<div class="col-xs-12">
+<div class="alert alert-danger"><?php echo $error_msg; ?></div>
+</div>
+<?php } ?>
 					
 <div class="col-xs-12">
 			<div class="panel panel-default ">
